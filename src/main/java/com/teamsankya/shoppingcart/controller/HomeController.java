@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.teamsankya.shoppingcart.dao.ProductDAO;
 import com.teamsankya.shoppingcart.model.ProductDTO;
@@ -35,12 +36,20 @@ public class HomeController {
 	}
 	
 	
-	/*@RequestMapping(value="/nameProduct/{productCategory}",method=RequestMethod.POST)
-	public String searchProduct(@PathVariable ProductDTO productCategory,Model model) throws IOException {
-		List<ProductDTO> product=dao.getProductByCategory(productCategory);
-		model.addAttribute(product);
-		return "viewProduct";
-	}*/
+	@RequestMapping(value="/searchProduct")
+	public ModelAndView searchProduct(@RequestParam("productCategory") String productCategory,ModelAndView model) throws IOException {
+		List<ProductDTO> dto=dao.searchProduct(productCategory);
+		String category = null;
+		for(ProductDTO product:dto) {
+			category=product.getProductCategory();
+		}
+		if(category!=null && category.equals(productCategory)) {
+			
+			return new ModelAndView("searchProduct","msg",dto);
+		}
+		else
+		return new ModelAndView("error mesg","msg","no result found");
+	}
 	
 	@RequestMapping("/admin")
 	public String adminPage() {

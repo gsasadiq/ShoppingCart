@@ -75,6 +75,14 @@ public class ProductDTO implements Serializable{
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
+	@Override
+	public String toString() {
+		return "ProductDTO [productId=" + productId + ", productName=" + productName + ", productCategory="
+				+ productCategory + ", productDescription=" + productDescription + ", productPrice=" + productPrice
+				+ ", productCondition=" + productCondition + ", productStatus=" + productStatus + ", unitInStock="
+				+ unitInStock + ", productManufacturer=" + productManufacturer + "]";
+	}
+	
 	
 	
 }

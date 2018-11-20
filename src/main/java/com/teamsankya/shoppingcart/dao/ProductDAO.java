@@ -9,5 +9,5 @@ public interface ProductDAO{
 	ProductDTO getProductById(String id);
 	List<ProductDTO> getAllProducts();
 	void deleteProduct(String id);
-	//List<ProductDTO> getProductByCategory(ProductDTO productCategory);
+	List<ProductDTO> searchProduct(String productCategory);
 }

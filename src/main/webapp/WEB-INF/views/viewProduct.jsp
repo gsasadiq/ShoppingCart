@@ -1,3 +1,5 @@
+<%@page import="com.teamsankya.shoppingcart.model.ProductDTO"%>
+<%@page import="java.util.List"%>
 <%@include file="/WEB-INF/views/template/header.jsp" %>
  
 
@@ -17,12 +19,22 @@
       		<div class="col-md-5">
       			<img alt="image" src="G://ecommerce/images/7.jpg" style="width: 100%; height: 300px;"/>      	
       		</div>
-      		<div class="col-md-5">
-      			<h3>Product name : ${product.productName}</h3>
-      			<p>Product description :${product.productDescription}</p>
-      			<p>Manufacturer :${product.productManufacturer}</p>
-      			<p>Category :${product.productCategory}</p>
-      			<p>Price :<strong>${product.productPrice} INR</strong></p>
+      		<% List<ProductDTO> beans=(List<ProductDTO>) request.getAttribute("msg");   %>
+<div class="row">
+<% for(ProductDTO bean : beans){ %>
+<div class="column">
+<table>
+
+		<h3>Product name :<%=bean.getProductName()%></h3>
+      			<p>Manufacturer :<%=bean.getProductManufacturer()%></p>
+      			<p>Price :<strong><%=bean.getProductPrice()%> INR</strong></p>
+      			<p>Category :<%=bean.getProductCategory() %></p>
+      			<p>Product Id :<%=bean.getProductId() %></p>
+      			</div>
+      			<%
+      			} 
+      			%>
+      			</table>
       		</div>
       	</div>
       </div>

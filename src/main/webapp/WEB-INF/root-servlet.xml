@@ -23,7 +23,7 @@
     </bean>
      <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
      
-	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sf">
+	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactory">
   <property name="configLocations" value="classpath:hibernate.cfg.xml"></property>                       
   </bean>
 	

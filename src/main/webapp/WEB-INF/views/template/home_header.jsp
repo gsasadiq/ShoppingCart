@@ -39,8 +39,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <div id="serach-bar">
-                        <form action="./nameProduct/{productCategory}" method="POST">
-                            <input class="search-area" type="text" name="text" placeholder="search here">
+                        <form action="./searchProduct" method="get">
+                            <input class="search-area" type="text" name="productCategory" placeholder="search here">
                             <input class="search-btn"type="submit" name="search" value="serach">
                         </form>
 				</div>

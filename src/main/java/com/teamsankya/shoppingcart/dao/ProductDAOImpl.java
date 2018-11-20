@@ -1,9 +1,9 @@
 package com.teamsankya.shoppingcart.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -54,6 +54,14 @@ public class ProductDAOImpl implements ProductDAO{
 		session.delete(getProductById(id));
 		session.getTransaction().commit();
 		session.close();
+	}
+	@Override
+	public List<ProductDTO> searchProduct(String productCategory){
+		String qry ="from ProductDTO where productCategory='"+productCategory+"'";
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery(qry);
+		List<ProductDTO> dto=query.getResultList();
+		return dto;
 	}
 
 	/*@Override
